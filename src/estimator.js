@@ -19,14 +19,19 @@ const covid19ImpactEstimator = (data) => {
   const sInfectionsByRequestedTime = sCurrentlyInfected * (2 ** Math.floor(data.timeToElapse / 3));
   const iSevereCasesbyRequestedTime = iInfectionsByRequestedTime * 0.15;
   const sSevereCasesbyRequestedTime = sInfectionsByRequestedTime * 0.15;
-  const iHospitalBedsByRequestedTime = Math.round((data.totalHospitalBeds * 0.35) - iSevereCasesbyRequestedTime);
-  const sHospitalBedsByRequestedTime = Math.round((data.totalHospitalBeds * 0.35) - sSevereCasesbyRequestedTime);
+  const iHospitalBedsByRequestedTime = Math.round((data.totalHospitalBeds * 0.35)
+  - iSevereCasesbyRequestedTime);
+  const sHospitalBedsByRequestedTime = Math.round((data.totalHospitalBeds * 0.35)
+  - sSevereCasesbyRequestedTime);
   const iCasesForICUByRequestedTime = iInfectionsByRequestedTime * 0.05;
   const sCasesForICUByRequestedTime = sInfectionsByRequestedTime * 0.05;
   const iCasesForVentilatorsByRequestedTime = Math.trunc(iInfectionsByRequestedTime * 0.02);
   const sCasesForVentilatorsByRequestedTime = Math.trunc(sInfectionsByRequestedTime * 0.02);
-  const iDollarsInFlight = parseFloat(iInfectionsByRequestedTime * data.region.avgDailyIncomeInUSD * data.region.avgDailyIncomePopulation * data.timeToElapse).toFixed(2);
-  const sDollarsInFlight = parseFloat(sInfectionsByRequestedTime * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * data.timeToElapse).toFixed(2);
+  const iDollarsInFlight = parseFloat(iInfectionsByRequestedTime * data.region.avgDailyIncomeInUSD
+    * data.region.avgDailyIncomePopulation * data.timeToElapse).toFixed(2);
+  const sDollarsInFlight = parseFloat(sInfectionsByRequestedTime
+    * data.region.avgDailyIncomePopulation
+    * data.region.avgDailyIncomeInUSD * data.timeToElapse).toFixed(2);
 
   const result = {
     impact: {
