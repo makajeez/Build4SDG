@@ -21,20 +21,31 @@ const covid19ImpactEstimator = (data) => {
   const sSevereCasesbyRequestedTime = sInfectionsByRequestedTime * 0.15;
   const iHospitalBedsByRequestedTime = Math.round((data.totalHospitalBeds * 0.35) - iSevereCasesbyRequestedTime);
   const sHospitalBedsByRequestedTime = Math.round((data.totalHospitalBeds * 0.35) - sSevereCasesbyRequestedTime);
+  const iCasesForICUByRequestedTime = iInfectionsByRequestedTime * 0.05;
+  const sCasesForICUByRequestedTime = sInfectionsByRequestedTime * 0.05;
+  const iCasesForVentilatorsByRequestedTime = Math.trunc(iInfectionsByRequestedTime * 0.02);
+  const sCasesForVentilatorsByRequestedTime = Math.trunc(sInfectionsByRequestedTime * 0.02);
+  const iDollarsInFlight = parseFloat(iInfectionsByRequestedTime * data.region.avgDailyIncomeInUSD * data.region.avgDailyIncomePopulation * data.timeToElapse).toFixed(2);
+  const sDollarsInFlight = parseFloat(sInfectionsByRequestedTime * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * data.timeToElapse).toFixed(2);
 
   const result = {
-    data,
     impact: {
       currentlyInfected: iCurrentlyInfected,
       infectionsByRequestedTime: iInfectionsByRequestedTime,
       severeCasesbyRequestedTime: iSevereCasesbyRequestedTime,
-      hospitalBedsByRequestedTime: iHospitalBedsByRequestedTime
+      hospitalBedsByRequestedTime: iHospitalBedsByRequestedTime,
+      casesForICUByequestedTime: iCasesForICUByRequestedTime,
+      casesForVentilatorsByequestedTime: iCasesForVentilatorsByRequestedTime,
+      dollarsInFlight: iDollarsInFlight
     },
     severeImpact: {
       currentlyInfected: sCurrentlyInfected,
       infectionsByRequestedTime: sInfectionsByRequestedTime,
       severeCasesbyRequestedTime: sSevereCasesbyRequestedTime,
-      hospitalBedsByRequestedTime: sHospitalBedsByRequestedTime
+      hospitalBedsByRequestedTime: sHospitalBedsByRequestedTime,
+      casesForICUByequestedTime: sCasesForICUByRequestedTime,
+      casesForVentilatorsByequestedTime: sCasesForVentilatorsByRequestedTime,
+      dollarsInFlight: sDollarsInFlight
     }
   };
 
