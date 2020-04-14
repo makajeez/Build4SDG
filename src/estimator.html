@@ -75,53 +75,5 @@
       </div>
     </form>
   </div>
-    <table width=100% id='hid'>
-      <thead >
-        <th>Currently Infected</th>
-        <th>infections By Requested Time</th>
-        <th>Severe Cases By Requested Time</th>
-        <th>Hospital Beds By Requested Time</th>
-        <th>Cases For ICU By Requested Time</th>
-        <th>Cases For Venilators By Requested Time</th>
-        <th>Dollars In Flight</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Impact</td>
-          <td>_blank</td>
-          <td>_blank</td>
-          <td>_blank</td>
-          <td>_blank</td>
-          <td>_blank</td>
-          <td>_blank</td>
-        </tr>
-        <tr>
-          <td>Severe Impact</td>
-          <td>_blank</td>
-          <td>_blank</td>
-          <td>_blank</td>
-          <td>_blank</td>
-          <td>_blank</td>
-          <td>_blank</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-<style>
-  #hid {
-    display: none;
-  }
-</style>
-<script> 
-const covid19ImpactEstimator = () => {
-  if (document.getElementById('hid').style.display === 'inherit') {
-        document.getElementById('hid').style.display = 'none';
-      } else{
-        document.getElementById('hid').style.display = 'inherit';
-      };
-};
-
-   
-</script>
 </body>
 </html>
